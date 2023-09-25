@@ -2,10 +2,14 @@ import { useContext } from "react";
 import FeedbackItem from "./FeedbackItem";
 import { motion, AnimatePresence } from 'framer-motion'
 import FeedbackContext from "../context/FeedbackContext";
+import Loading from "../shared/Loading";
 
 function FeedbackList({}) {
 
-    const {list} = useContext(FeedbackContext)
+    const {list,isLoading} = useContext(FeedbackContext)
+
+    if(isLoading)
+    return <Loading />
 
     if(!list || list.length===0)
     return "No Feedbacks Yet";
